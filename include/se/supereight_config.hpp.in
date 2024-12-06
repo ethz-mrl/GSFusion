@@ -1,0 +1,18 @@
+/*
+ * SPDX-FileCopyrightText: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
+ * SPDX-FileCopyrightText: 2023 Nils Funk
+ * SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#ifndef SE_SUPEREIGHT_CONFIG_HPP
+#define SE_SUPEREIGHT_CONFIG_HPP
+
+#define SE_VERSION "@Supereight2_VERSION@"
+#define SE_VERSION_MAJOR @Supereight2_VERSION_MAJOR@
+#define SE_VERSION_MINOR @Supereight2_VERSION_MINOR@
+#define SE_VERSION_PATCH @Supereight2_VERSION_PATCH@
+
+#cmakedefine01 SE_TBB
+
+#endif // SE_SUPEREIGHT_CONFIG_HPP

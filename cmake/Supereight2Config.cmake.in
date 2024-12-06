@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2022 Smart Robotics Lab, Imperial College London, Technical University of Munich
+# SPDX-License-Identifier: CC0-1.0
+set(@PACKAGE_NAME_UC@_VERSION @CMAKE_PROJECT_VERSION@)
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(SRLProjection)
+find_dependency(Eigen3)
+find_dependency(OpenCV)
+find_dependency(Boost)
+find_dependency(TBB)
+find_dependency(OpenMP)
+
+get_filename_component(DIRNAME "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include("${DIRNAME}/@PACKAGE_NAME@Targets.cmake")
+
+check_required_components(@PACKAGE_NAME@)

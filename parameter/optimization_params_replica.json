@@ -1,0 +1,17 @@
+{
+  "sh_degree": 3,
+  "position_lr": 0.00016,
+  "feature_lr": 0.0025,
+  "opacity_lr": 0.05,
+  "scaling_lr": 0.001,
+  "rotation_lr": 0.001,
+  "lambda_dssim": 0.2,
+  "qtree_thresh": 0.1,
+  "qtree_min_pixel_size": 1,
+  "kf_thresh": 50,
+  "kf_iters": 5,
+  "non_kf_iters": 3,
+  "random_kf_num": 2,
+  "global_iters": 10,
+  "keep_all_frames": false
+}

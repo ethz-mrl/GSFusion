@@ -1,0 +1,44 @@
+%YAML:1.2
+# SPDX-FileCopyrightText: 2021 Smart Robotics Lab, Imperial College London, Technical University of Munich
+# SPDX-FileCopyrightText: 2024 Smart Robotics Lab, Technical University of Munich
+# SPDX-License-Identifier: CC0-1.0
+
+map:
+  dim:                        [12, 12, 12]
+  res:                        0.01
+
+data:
+  # tsdf
+  truncation_boundary_factor: 8
+  max_weight:                 100
+
+sensor:
+  width:                      876
+  height:                     584
+  fx:                         316.3837659917395
+  fy:                         319.18649362678593
+  cx:                         438.0
+  cy:                         292.0
+  near_plane:                 0.4
+  far_plane:                  6.0
+
+reader:
+  reader_type:                "scannetpp"
+  sequence_path:              "/usr/wiss/weji/Datasets/scannetpp/data/8b5caf3398/dslr"
+  ground_truth_file:          "/usr/wiss/weji/Datasets/scannetpp/data/8b5caf3398/dslr/nerfstudio/transforms_undistorted_2.json"
+  fps:                        0.0
+  drop_frames:                false
+  verbose:                    0
+
+app:
+  enable_ground_truth:        true
+  optim_params_path:          "/usr/wiss/weji/Desktop/GSFusion/parameter/optimization_params_scannetpp.json"
+  ply_path:                   "/usr/wiss/weji/Desktop/GSFusion/output_8b/point_cloud"
+  mesh_path:                  "/usr/wiss/weji/Desktop/GSFusion/output_8b/mesh"
+  slice_path:                 ""
+  structure_path:             ""
+  integration_rate:           1
+  rendering_rate:             1
+  meshing_rate:               0
+  max_frames:                 -1
+  log_file:                   "/tmp/log.tsv"

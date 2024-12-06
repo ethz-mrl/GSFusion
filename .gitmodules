@@ -1,0 +1,12 @@
+[submodule "third_party/glm"]
+	path = third_party/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "third_party/json"]
+	path = third_party/json
+	url = https://github.com/nlohmann/json.git
+[submodule "third_party/tinyply"]
+	path = third_party/tinyply
+	url = https://github.com/ddiakopoulos/tinyply.git
+[submodule "third_party/srl_projection"]
+	path = third_party/srl_projection
+	url = https://bitbucket.org/smartroboticslab/srl_projection.git

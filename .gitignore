@@ -1,32 +1,16 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+.vscode
+.idea
+*.pt
+.venv
+*.png
+*.sqlite
+*.nsys-rep
+build/
+cmake-build-debug/
+cmake-build-release/
+third_party/libtorch
+third_party/open3d
+output*
+data/
+datasets/
+debug*
