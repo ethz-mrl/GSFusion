@@ -19,6 +19,7 @@
 #include <random>
 #include <tinyply.h>
 #include <torch/torch.h>
+#include <filesystem>
 
 using Slice = torch::indexing::Slice;
 
