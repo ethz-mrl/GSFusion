@@ -164,8 +164,6 @@ int main(int argc, char** argv)
 
             const bool last_frame = frame == config.app.max_frames || static_cast<size_t>(frame) == reader->numFrames();
             if (last_frame) {
-                printProgress(static_cast<double>(frame) / (static_cast<double>(reader->numFrames()) - 1));
-
                 double s = PerfStats::getTime();
 
                 // Refresh GUI
@@ -250,6 +248,7 @@ int main(int argc, char** argv)
 
             se::perfstats.sample("memory usage", se::system::memory_usage_self() / 1024.0 / 1024.0, PerfStats::MEMORY);
             se::perfstats.writeToFilestream();
+            printProgress(static_cast<double>(frame) / (static_cast<double>(reader->numFrames()) - 1));
         }
 
         stop_signal.store(true);

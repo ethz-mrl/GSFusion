@@ -24,17 +24,17 @@ sensor:
 
 reader:
   reader_type:                "replica"
-  sequence_path:              "/usr/wiss/weji/Projects/GSFusion/datasets/Replica/room0"
-  ground_truth_file:          "/usr/wiss/weji/Projects/GSFusion/datasets/Replica/room0/traj.txt"
+  sequence_path:              "<replica_scene_path>"
+  ground_truth_file:          "<replica_scene_path>/traj.txt"
   fps:                        0.0
   drop_frames:                false
   verbose:                    0
 
 app:
   enable_ground_truth:        true
-  optim_params_path:          "/usr/wiss/weji/Desktop/GSFusion/parameter/optimization_params_replica.json"
-  ply_path:                   "/usr/wiss/weji/Desktop/GSFusion/output_room0/point_cloud"
-  mesh_path:                  "/usr/wiss/weji/Desktop/GSFusion/output_room0/mesh"
+  optim_params_path:          "<project_root_path>/parameter/optimization_params_replica.json"
+  ply_path:                   "<checkpoint_path>/point_cloud"
+  mesh_path:                  "<checkpoint_path>/mesh"
   slice_path:                 ""
   structure_path:             ""
   integration_rate:           1

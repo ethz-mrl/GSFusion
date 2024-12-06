@@ -24,17 +24,17 @@ sensor:
 
 reader:
   reader_type:                "scannetpp"
-  sequence_path:              "/usr/wiss/weji/Datasets/scannetpp/data/8b5caf3398/dslr"
-  ground_truth_file:          "/usr/wiss/weji/Datasets/scannetpp/data/8b5caf3398/dslr/nerfstudio/transforms_undistorted_2.json"
+  sequence_path:              "<scannetpp_scene_path>"
+  ground_truth_file:          "<scannetpp_scene_path>/nerfstudio/transforms_undistorted_2.json"
   fps:                        0.0
   drop_frames:                false
   verbose:                    0
 
 app:
   enable_ground_truth:        true
-  optim_params_path:          "/usr/wiss/weji/Desktop/GSFusion/parameter/optimization_params_scannetpp.json"
-  ply_path:                   "/usr/wiss/weji/Desktop/GSFusion/output_8b/point_cloud"
-  mesh_path:                  "/usr/wiss/weji/Desktop/GSFusion/output_8b/mesh"
+  optim_params_path:          "<project_root_path>/parameter/optimization_params_scannetpp.json"
+  ply_path:                   "<checkpoint_path>/point_cloud"
+  mesh_path:                  "<checkpoint_path>/mesh"
   slice_path:                 ""
   structure_path:             ""
   integration_rate:           1

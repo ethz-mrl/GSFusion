@@ -64,15 +64,16 @@ rm libtorch-cxx11-abi-shared-with-deps-2.0.1+cu118.zip
 Set up Open3D:
 ```sh
 cd GSFusion
-wget https://github.com/isl-org/Open3D/releases/download/main-devel/open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0+fcc396e.tar.xz
-tar -xzvf open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0+fcc396e.tar.xz -C third_party
-mv third_party/open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0+fcc396e third_party/open3d
-rm open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0+fcc396e.tar.xz
+wget https://github.com/isl-org/Open3D/releases/download/v0.18.0/open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0.tar.xz
+tar -xvf open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0.tar.xz -C third_party
+mv third_party/open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0 third_party/open3d
+rm open3d-devel-linux-x86_64-cxx11-abi-cuda-0.18.0.tar.xz
 ```
 
 Build in release mode:
 
 ``` sh
+cd GSFusion
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -- -j
 ```
@@ -151,6 +152,7 @@ You can also adjust the hyper-parameters for optimization in the JSON file under
 
 Now run the executable using the following commands:
 ```sh
+cd GSFusion
 # ScanNet++ dataset
 ./build/app/gsfusion config/scannetpp_8b5caf3398.yaml
 # Replica dataset
@@ -190,4 +192,7 @@ Copyright (c) 2024, Jiaxin Wei
 ## Acknowledgement
 This work was supported by the EU project AUTOASSESS. The authors would like to thank Simon Boche and Sebastián Barbas Laina for their assistance in collecting and processing drone data. We also extend our gratitude to Sotiris Papatheodorou for his valuable discussions and support with the Supereight2 software.
 
-
+We gratefully acknowledge the contributions of the following open-source projects, which have been beneficial in the development of this work:
+- [Inria-3DGS](https://github.com/graphdeco-inria/gaussian-splatting): The original Python implementation of Gaussian Splatting, developed by Inria and MPII.
+- [MrNeRF-gaussian-splatting-cuda](https://github.com/MrNeRF/gaussian-splatting-cuda): A highly efficient C++ implementation of Gaussian Splatting, adapted for CUDA.
+- [SRL-Supereight2](https://bitbucket.org/smartroboticslab/supereight2/src/master/): A high-performance template octree library and a dense volumetric SLAM pipeline implementation.
