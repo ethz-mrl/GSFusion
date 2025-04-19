@@ -1,0 +1,44 @@
+%YAML:1.2
+# SPDX-FileCopyrightText: 2021 Smart Robotics Lab, Imperial College London, Technical University of Munich
+# SPDX-FileCopyrightText: 2024 Smart Robotics Lab, Technical University of Munich
+# SPDX-License-Identifier: CC0-1.0
+
+map:
+  dim:                        [12, 12, 12]
+  res:                        0.01
+
+data:
+  # tsdf
+  truncation_boundary_factor: 8
+  max_weight:                 100
+
+sensor:
+  width:                      640
+  height:                     480
+  fx:                         517.3
+  fy:                         516.5
+  cx:                         318.6
+  cy:                         255.3
+  near_plane:                 0.4
+  far_plane:                  6.0
+
+reader:
+  reader_type:                "tum"
+  sequence_path:              "<tum_rgbd_scene_path>"
+  ground_truth_file:          "<tum_rgbd_scene_path>/groundtruth.txt"
+  fps:                        0.0
+  drop_frames:                false
+  verbose:                    0
+
+app:
+  enable_ground_truth:        true
+  optim_params_path:          "<project_root_path>/parameter/optimization_params_tum_rgbd.json"
+  ply_path:                   "<checkpoint_path>/point_cloud"
+  mesh_path:                  "<checkpoint_path>/mesh"
+  slice_path:                 ""
+  structure_path:             ""
+  integration_rate:           1
+  rendering_rate:             1
+  meshing_rate:               0
+  max_frames:                 -1
+  log_file:                   "/tmp/log.tsv"

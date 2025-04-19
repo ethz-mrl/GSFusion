@@ -29,6 +29,8 @@ enum class ReaderType {
     REPLICA,
     /** Use the se::ScanNetppReader. */
     SCANNETPP,
+    /** Use the se::TUMReader. */
+    TUM,
     UNKNOWN
 };
 

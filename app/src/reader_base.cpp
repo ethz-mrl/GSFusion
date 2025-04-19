@@ -31,6 +31,9 @@ se::ReaderType se::string_to_reader_type(const std::string& s)
     else if (s_lowered == "scannetpp") {
         return se::ReaderType::SCANNETPP;
     }
+    else if (s_lowered == "tum") {
+        return se::ReaderType::TUM;
+    }
     else {
         return se::ReaderType::UNKNOWN;
     }
@@ -44,6 +47,9 @@ std::string se::reader_type_to_string(se::ReaderType t)
     }
     else if (t == se::ReaderType::SCANNETPP) {
         return "ScanNetpp";
+    }
+    else if (t == se::ReaderType::TUM) {
+        return "TUM";
     }
     else {
         return "unknown";

@@ -11,6 +11,7 @@
 #include "reader.hpp"
 #include "reader_replica.hpp"
 #include "reader_scannetpp.hpp"
+#include "reader_tum.hpp"
 #include "se/common/filesystem.hpp"
 #include "se/common/str_utils.hpp"
 
@@ -24,6 +25,9 @@ se::Reader* se::create_reader(const se::ReaderConfig& config)
         break;
     case se::ReaderType::SCANNETPP:
         reader = new se::ScanNetppReader(config);
+        break;
+    case se::ReaderType::TUM:
+        reader = new se::TUMReader(config);
         break;
     default:
         std::cerr << "Error: Unrecognised file format, file not loaded\n";

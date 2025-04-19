@@ -27,6 +27,7 @@ add_library(${LIB_NAME} STATIC
   "src/reader_base.cpp"
   "src/reader_replica.cpp"
   "src/reader_scannetpp.cpp"
+  "src/reader_tum.cpp"
 )
 target_include_directories(${LIB_NAME} PUBLIC include)
 target_link_libraries(${LIB_NAME} PUBLIC SRL::Supereight2 )

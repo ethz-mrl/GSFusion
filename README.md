@@ -17,6 +17,7 @@
 Abstract: *Traditional volumetric fusion algorithms preserve the spatial structure of 3D scenes, which is beneficial for many tasks in computer vision and robotics. However, they often lack realism in terms of visualization. Emerging 3D Gaussian splatting bridges this gap, but existing Gaussian-based reconstruction methods often suffer from artifacts and inconsistencies with the underlying 3D structure, and struggle with real-time optimization, unable to provide users with immediate feedback in high quality. One of the bottlenecks arises from the massive amount of Gaussian parameters that need to be updated during optimization. Instead of using 3D Gaussian as a standalone map representation, we incorporate it into a volumetric mapping system to take advantage of geometric information and propose to use a quadtree data structure on images to drastically reduce the number of splats initialized. In this way, we simultaneously generate a compact 3D Gaussian map with fewer artifacts and a volumetric map on the fly. Our method, GSFusion, significantly enhances computational efficiency without sacrificing rendering quality, as demonstrated on both synthetic and real datasets.*
 
 ## News
+- **[2025-04-19]**: Add a new reader for TUM-RGBD dataset.
 - **[2024-12-06]**: Released the code of GSFusion.
 - **[2024-11-09]**: Our paper has been accepted by Robotics and Automation Letters (RAL)!
 - **[2024-08-22]**: Released an automatic evaluation system for GSFusion and provide several pre-trained models for assessment.
@@ -116,6 +117,23 @@ Please follow the instructions on [ScanNet++](https://kaldir.vc.in.tum.de/scanne
 
 **Note**: If you change the naming or structure of the dataset, ensure to also update the corresponding code in `app/include/reader_<dataset_name>.hpp`, `app/src/reader_<dataset_name>.cpp`, and `app/src/main.cpp` (line 98-101).
 
+### TUM-RGBD
+
+Please follow the instructions on [TUM-RBGD](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download) website to download dataset. The expected file structure is as follows:
+```sh
+<tum_rgbd_scene_path>
+├── groundtruth.txt
+├── rgb
+│   ├── <timestamp>.png
+│   └── ...
+├── depth
+│   ├── <timestamp>.png
+│   └── ...
+├── rgb.txt
+└── depth.txt
+```
+
+**Note**: We set a threshold for timestamp difference to associate depth and RGB images, and we interpolate the ground truth poses at the depth image timestamps. Therefore, some unmatched images will be discarded.
 
 ## Usage Example
 
@@ -136,7 +154,7 @@ sensor:
   cy:                         339.5
 
 reader:
-  reader_type:                "replica"  # or "scannetpp"
+  reader_type:                "replica"  # or "scannetpp", "tum"
   sequence_path:              "<replica_scene_path>"  # absolute path
   ground_truth_file:          "<replica_scene_path>/traj.txt"
 
@@ -157,6 +175,8 @@ cd GSFusion
 ./build/app/gsfusion config/scannetpp_8b5caf3398.yaml
 # Replica dataset
 ./build/app/gsfusion config/replica_room0.yaml
+# TUM-RGBD dataset
+./build/app/gsfusion config/tum_rgbd_freiburg1_desk2.yaml
 ```
 
 
