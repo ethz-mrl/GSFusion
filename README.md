@@ -17,6 +17,7 @@
 Abstract: *Traditional volumetric fusion algorithms preserve the spatial structure of 3D scenes, which is beneficial for many tasks in computer vision and robotics. However, they often lack realism in terms of visualization. Emerging 3D Gaussian splatting bridges this gap, but existing Gaussian-based reconstruction methods often suffer from artifacts and inconsistencies with the underlying 3D structure, and struggle with real-time optimization, unable to provide users with immediate feedback in high quality. One of the bottlenecks arises from the massive amount of Gaussian parameters that need to be updated during optimization. Instead of using 3D Gaussian as a standalone map representation, we incorporate it into a volumetric mapping system to take advantage of geometric information and propose to use a quadtree data structure on images to drastically reduce the number of splats initialized. In this way, we simultaneously generate a compact 3D Gaussian map with fewer artifacts and a volumetric map on the fly. Our method, GSFusion, significantly enhances computational efficiency without sacrificing rendering quality, as demonstrated on both synthetic and real datasets.*
 
 ## News
+- **[2025-09-21]**: Add a Dockerfile to run GSFusion in a reproducible environment.
 - **[2025-04-19]**: Add a new reader for TUM-RGBD dataset.
 - **[2024-12-06]**: Released the code of GSFusion.
 - **[2024-11-09]**: Our paper has been accepted by Robotics and Automation Letters (RAL)!
@@ -77,6 +78,38 @@ Build in release mode:
 cd GSFusion
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -- -j
+```
+
+
+## Build with Docker (Alternative)
+Follow the guide to use Docker to build and run GSFusion in a controlled, reproducible environment.
+
+Install NVIDIA Container Toolkit on your host machine, which allows Docker to access your GPU.
+
+```sh
+# Add NVIDIA's repository and keys
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+# Install the toolkit
+sudo apt-get update
+sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
+```
+
+Run this command in your terminal to allow the Docker container to display the visualization window on your screen. You only need to do this once per session.
+
+```sh
+xhost +local:docker
+```
+
+Build the Docker image:
+
+```sh
+cd GSFusion
+sudo docker build -t gsfusion .
 ```
 
 
@@ -178,6 +211,34 @@ cd GSFusion
 # TUM-RGBD dataset
 ./build/app/gsfusion config/tum_rgbd_freiburg1_desk2.yaml
 ```
+
+If you build with Docker, run the following commands instead:
+
+```sh
+cd GSFusion
+sudo docker run -it --rm --gpus all \
+  --device /dev/dri:/dev/dri \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v "$(pwd)/config:/app/GSFusion/config" \
+  -v "<path_to_your_dataset>:/data" \
+  -v "<output_path_on_host_machine>:<output_path_in_docker_container>" \
+  gsfusion \
+  ./build/app/gsfusion config/<your_config_file.yaml>
+```
+**Note**: You must map your local directories for configuration, datasets, and output into the container, and revise the path in configuration yaml files accordingly using docker path.
+
+<details>
+<summary><span style="font-weight: bold;">Command Line Arguments for Docker</span></summary>
+
+  #### -v "$(pwd)/config:/app/GSFusion/config"
+  Maps your local config folder into the container.
+  #### -v "<path_to_your_dataset>:/data"
+  Maps your local dataset into the /data folder inside the container. You must update your .yaml config file to read from /data.
+  #### -v "<output_path_on_host_machine>:<output_path_in_docker_container>"
+  Maps a local output folder to the container's output directory, so results are saved to your computer.
+
+</details>
 
 
 ## Evaluation
