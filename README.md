@@ -243,7 +243,7 @@ sudo docker run -it --rm --gpus all \
 
 ## Evaluation
 
-We develop an automatic evaluation system for GSFusion and provide several pre-trained models for assessment. You can download the necessary data [here](https://cloud.cvai.cit.tum.de/s/dQZgJPE2ydzq32E), and follow the instructions in [GSFusion_eval](https://github.com/goldoak/GSFusion_eval) to get started.
+We develop an automatic evaluation system for GSFusion and provide several pre-trained models for assessment. You can download the necessary data [here](https://cloud.cvai.cit.tum.de/s/feg33Y8wGMGEC9t), and follow the instructions in [GSFusion_eval](https://github.com/goldoak/GSFusion_eval) to get started.
 
 
 ## Citation
